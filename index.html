@@ -28,11 +28,11 @@ body {
     100% { transform: translateY(110vh); }
 }
 
+/* Frame without outer line */
 .frame {
     background: white;
     padding: 40px;
     border-radius: 25px;
-    border: 3px solid #ffb6c1;
     text-align: center;
     z-index: 2;
     width: 420px;
@@ -90,6 +90,22 @@ button:hover {
     50% { transform: scale(1.15); }
     100% { transform: scale(1); }
 }
+
+/* Sparkles */
+.sparkle-bg {
+    position: absolute;
+    color: gold;
+    font-size: 16px;
+    z-index: 0;
+    animation: sparkleMove linear infinite;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+@keyframes sparkleMove {
+    0% { transform: translateY(0) scale(0.5); opacity: 1; }
+    100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+}
 </style>
 </head>
 
@@ -142,6 +158,10 @@ function showMessage() {
 
     button.style.display = "none";
     music.play();
+
+    // Add sparkles
+    createSparkles();
+    setInterval(createSparkles, 400); // Continuous sparkles
 }
 
 /* Falling hearts */
@@ -160,8 +180,22 @@ function createHeart() {
 }
 
 setInterval(createHeart, 300);
+
+/* Sparkles in background */
+function createSparkles() {
+    const sparkle = document.createElement("div");
+    sparkle.classList.add("sparkle-bg");
+    sparkle.innerHTML = "✨";
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.fontSize = (Math.random() * 20 + 10) + "px";
+    sparkle.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => {
+        sparkle.remove();
+    }, 3000);
+}
 </script>
 
 </body>
 </html>
-
