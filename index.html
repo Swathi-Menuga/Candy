@@ -51,11 +51,44 @@ button:hover {
     background-color: #ff0055;
 }
 
+/* Fade in message */
 #message {
     display: none;
     margin-top: 20px;
     font-size: 18px;
     color: #444;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+/* Glowing dates */
+.glowDate {
+    color: #ff2e63;
+    font-weight: bold;
+    animation: glow 1.5s infinite alternate;
+}
+
+/* Sparkle Bangaram */
+.sparkle {
+    color: gold;
+    font-weight: bold;
+    animation: sparkle 1s infinite alternate;
+}
+
+@keyframes sparkle {
+    from { text-shadow: 0 0 5px gold; }
+    to { text-shadow: 0 0 20px orange; }
+}
+
+/* Heartbeat animation */
+.heartbeat {
+    animation: beat 1s infinite;
+}
+
+@keyframes beat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 </style>
 </head>
@@ -72,28 +105,28 @@ button:hover {
 
     <button id="openBtn" onclick="showMessage()">Open My Heart 💌</button>
 
-    <div id="message">
-        Our love story began on <b>15 September 2024</b> 💖<br><br>
+   <div id="message">
+    Our love story began on <span class="glowDate">15 September 2024</span> 💖<br><br>
 
-        That was the day something magical started…<br><br>
+    That was the day something magical started…<br><br>
 
-        On <b>19 October</b>, our souls didn’t just meet —  
-        they united forever ✨<br><br>
+    On <span class="glowDate">19 October</span>,  
+    our souls didn’t just meet — they united forever ✨<br><br>
 
-        You walked into my life as a surprise,<br><br>
+    You walked into my life as a surprise,<br><br>
 
-        but you stayed as my destiny.<br><br>
+    but you stayed as my destiny.<br><br>
 
-        Today you are my boyfriend…<br>
-        Tomorrow you will be my husband 💍<br><br>
+    Today you are my boyfriend…<br>
+    Tomorrow you will be my husband 💍<br><br>
 
-        I used to call you <b>Bangaram</b> 💛  
-        because you are my treasure, my heart, my everything.<br><br>
+    I used to call you <span class="sparkle">Bangaram</span> 💛  
+    because you are my treasure, my heart, my everything.<br><br>
 
-        I can’t wait to build our forever together.<br><br>
+    I can’t wait to build our forever together.<br><br>
 
-        I love you endlessly ❤️
-    </div>
+    <span class="heartbeat">I love you endlessly ❤️</span>
+</div>
 
 </div>
 
@@ -104,10 +137,18 @@ function showMessage() {
     var music = document.getElementById("bgMusic");
 
     message.style.display = "block";
+    setTimeout(function(){
+        message.style.opacity = "1";
+    }, 100);
+
     button.style.display = "none";
-    music.play();
+
+    if (music) {
+        music.play();
+    }
 }
 </script>
 
 </body>
 </html>
+
