@@ -25,6 +25,7 @@ body {
     box-shadow: 0 0 40px rgba(255, 46, 99, 0.7);
     animation: glow 2s infinite alternate;
     z-index: 2;
+    width: 400px;
 }
 
 @keyframes glow {
@@ -34,6 +35,16 @@ body {
 
 h1 {
     color: #ff0055;
+}
+
+/* IMAGE STYLE */
+.photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #ff2e63;
+    margin-bottom: 15px;
 }
 
 button {
@@ -53,14 +64,13 @@ button:hover {
 #message {
     display: none;
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 18px;
     color: #444;
 }
 
 /* Falling Hearts */
 .heart {
     position: absolute;
-    color: red;
     animation: fall linear infinite;
 }
 
@@ -73,15 +83,19 @@ button:hover {
 
 <body>
 
-<!-- Background Music -->
+<!-- Background Music (No autoplay) -->
 <audio id="bgMusic" loop>
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
 
 <div class="frame">
+
+    <!-- ADD YOUR IMAGE HERE -->
+    <!-- <img src="YOUR_IMAGE_LINK_HERE" class="photo"> -->
+
     <h1>Happy Birthday My Love ❤️</h1>
 
-    <button onclick="showMessage()">Open My Heart 💌</button>
+    <button id="openBtn" onclick="showMessage()">Open My Heart 💌</button>
 
     <div id="message">
         You walked into my life as a surprise,<br><br>
@@ -94,11 +108,19 @@ button:hover {
 </div>
 
 <script>
+<script>
 function showMessage() {
+    // Show message
     document.getElementById("message").style.display = "block";
 
+    // Hide button permanently
+    document.getElementById("openBtn").style.display = "none";
+
+    // Play music (if you have audio id="bgMusic")
     var music = document.getElementById("bgMusic");
-    music.play();
+    if (music) {
+        music.play();
+    }
 }
 
 /* Create falling hearts */
@@ -120,6 +142,4 @@ setInterval(createHeart, 300);
 </script>
 
 </body>
-
 </html>
-
