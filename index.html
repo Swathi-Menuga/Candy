@@ -110,19 +110,12 @@ button:hover {
 <script>
 <script>
 function showMessage() {
-    // Show message
+    // Show the message
     document.getElementById("message").style.display = "block";
 
-    // Hide button permanently
+    // Hide the button
     document.getElementById("openBtn").style.display = "none";
-
-    // Play music (if you have audio id="bgMusic")
-    var music = document.getElementById("bgMusic");
-    if (music) {
-        music.play();
-    }
 }
-
 /* Create falling hearts */
 function createHeart() {
     const heart = document.createElement("div");
@@ -143,3 +136,4 @@ setInterval(createHeart, 300);
 
 </body>
 </html>
+
