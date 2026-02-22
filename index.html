@@ -28,7 +28,24 @@ body {
     100% { transform: translateY(110vh); }
 }
 
-/* Frame without outer line */
+/* Sparkles / Fireworks */
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, yellow, orange, red);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: sparkleAnim 1s ease-out forwards;
+    z-index: 1;
+}
+
+@keyframes sparkleAnim {
+    0% { transform: scale(1) translate(0,0); opacity: 1; }
+    100% { transform: scale(0) translate(var(--x), var(--y)); opacity: 0; }
+}
+
+/* Card Frame */
 .frame {
     background: white;
     padding: 40px;
@@ -74,12 +91,6 @@ button:hover {
     font-weight: bold;
 }
 
-/* Sparkle Bangaram */
-.sparkle {
-    color: goldenrod;
-    font-weight: bold;
-}
-
 /* Heartbeat */
 .heartbeat {
     animation: beat 1s infinite;
@@ -89,22 +100,6 @@ button:hover {
     0% { transform: scale(1); }
     50% { transform: scale(1.15); }
     100% { transform: scale(1); }
-}
-
-/* Sparkles */
-.sparkle-bg {
-    position: absolute;
-    color: gold;
-    font-size: 16px;
-    z-index: 0;
-    animation: sparkleMove linear infinite;
-    pointer-events: none;
-    opacity: 0.8;
-}
-
-@keyframes sparkleMove {
-    0% { transform: translateY(0) scale(0.5); opacity: 1; }
-    100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
 }
 </style>
 </head>
@@ -159,9 +154,7 @@ function showMessage() {
     button.style.display = "none";
     music.play();
 
-    // Add sparkles
-    createSparkles();
-    setInterval(createSparkles, 400); // Continuous sparkles
+    startSparkles();
 }
 
 /* Falling hearts */
@@ -181,19 +174,29 @@ function createHeart() {
 
 setInterval(createHeart, 300);
 
-/* Sparkles in background */
-function createSparkles() {
-    const sparkle = document.createElement("div");
-    sparkle.classList.add("sparkle-bg");
-    sparkle.innerHTML = "✨";
-    sparkle.style.left = Math.random() * 100 + "vw";
-    sparkle.style.fontSize = (Math.random() * 20 + 10) + "px";
-    sparkle.style.animationDuration = (Math.random() * 3 + 2) + "s";
-    document.body.appendChild(sparkle);
+/* Sparkle effect */
+function startSparkles() {
+    setInterval(() => {
+        const sparkle = document.createElement("div");
+        sparkle.classList.add("sparkle");
+        
+        const startX = Math.random() * window.innerWidth;
+        const startY = Math.random() * window.innerHeight;
+        sparkle.style.left = startX + "px";
+        sparkle.style.top = startY + "px";
 
-    setTimeout(() => {
-        sparkle.remove();
-    }, 3000);
+        // Random direction
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 100 + 50;
+        sparkle.style.setProperty('--x', distance * Math.cos(angle) + 'px');
+        sparkle.style.setProperty('--y', distance * Math.sin(angle) + 'px');
+
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => {
+            sparkle.remove();
+        }, 1000);
+    }, 100); // creates sparkles rapidly
 }
 </script>
 
