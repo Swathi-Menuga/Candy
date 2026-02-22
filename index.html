@@ -74,7 +74,7 @@ button:hover {
 <body>
 
 <!-- Background Music -->
-<audio autoplay loop>
+<audio id="bgMusic" loop>
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
 
@@ -96,6 +96,9 @@ button:hover {
 <script>
 function showMessage() {
     document.getElementById("message").style.display = "block";
+
+    var music = document.getElementById("bgMusic");
+    music.play();
 }
 
 /* Create falling hearts */
@@ -119,3 +122,4 @@ setInterval(createHeart, 300);
 </body>
 
 </html>
+
