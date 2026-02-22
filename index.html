@@ -37,18 +37,8 @@ h1 {
     color: #ff0055;
 }
 
-/* IMAGE STYLE */
-.photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #ff2e63;
-    margin-bottom: 15px;
-}
-
 button {
-    background-color: #ffd6e8;
+    background-color: #ff2e63;
     color: white;
     padding: 12px 25px;
     border: none;
@@ -67,75 +57,57 @@ button:hover {
     font-size: 18px;
     color: #444;
 }
-
-/* Falling Hearts */
-.heart {
-    position: absolute;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    0% { transform: translateY(-10vh); }
-    100% { transform: translateY(110vh); }
-}
 </style>
 </head>
 
 <body>
 
-<!-- Background Music (No autoplay) -->
 <audio id="bgMusic" loop>
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
 
 <div class="frame">
 
-    <!-- ADD YOUR IMAGE HERE -->
-    <!-- <img src="YOUR_IMAGE_LINK_HERE" class="photo"> -->
-
     <h1>Happy Birthday My Love ❤️</h1>
 
     <button id="openBtn" onclick="showMessage()">Open My Heart 💌</button>
 
     <div id="message">
+        Our love story began on <b>15 September 2024</b> 💖<br><br>
+
+        That was the day something magical started…<br><br>
+
+        On <b>19 October</b>, our souls didn’t just meet —  
+        they united forever ✨<br><br>
+
         You walked into my life as a surprise,<br><br>
+
         but you stayed as my destiny.<br><br>
+
         Today you are my boyfriend…<br>
         Tomorrow you will be my husband 💍<br><br>
+
+        I used to call you <b>Bangaram</b> 💛  
+        because you are my treasure, my heart, my everything.<br><br>
+
         I can’t wait to build our forever together.<br><br>
+
         I love you endlessly ❤️
     </div>
+
 </div>
 
 <script>
-
 function showMessage() {
     var message = document.getElementById("message");
     var button = document.getElementById("openBtn");
+    var music = document.getElementById("bgMusic");
 
     message.style.display = "block";
     button.style.display = "none";
+    music.play();
 }
-/* Create falling hearts */
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
-    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 5000);
-}
-
-setInterval(createHeart, 300);
 </script>
 
 </body>
 </html>
-
-
-
