@@ -108,13 +108,13 @@ button:hover {
 </div>
 
 <script>
-<script>
-function showMessage() {
-    // Show the message
-    document.getElementById("message").style.display = "block";
 
-    // Hide the button
-    document.getElementById("openBtn").style.display = "none";
+function showMessage() {
+    var message = document.getElementById("message");
+    var button = document.getElementById("openBtn");
+
+    message.style.display = "block";
+    button.style.display = "none";
 }
 /* Create falling hearts */
 function createHeart() {
@@ -136,4 +136,5 @@ setInterval(createHeart, 300);
 
 </body>
 </html>
+
 
