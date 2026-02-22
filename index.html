@@ -85,24 +85,28 @@ button:hover {
     100% { transform: scale(1); }
 }
 .heartBtn {
-    background-color: #ff69b4;
+    background-color: #ff0000; /* bright red */
     color: white;
-    font-size: 32px;        /* Make the heart big */
-    width: 80px;
-    height: 80px;
+    font-size: 20px;
+    padding: 20px 30px;
     border: none;
-    border-radius: 50%;     /* Makes it circular */
+    border-radius: 50px; /* pill-shaped */
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
 .heartBtn:hover {
-    background-color: #ff1493;
-    transform: scale(1.2);
+    transform: translate(-50%, -50%) scale(1.1);
+    background-color: #cc0000; /* darker red on hover */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
 }
 </style>
 </head>
@@ -150,5 +154,6 @@ setInterval(createHeart, 300);
 
 </body>
 </html>
+
 
 
