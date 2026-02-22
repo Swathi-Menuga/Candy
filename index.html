@@ -130,7 +130,8 @@ button:hover {
     <h1>Happy Birthday My Love ❤️</h1>
 
     <!-- Couple Toys Image (You can replace link with your own image) -->
-    <img src="https://i.imgur.com/8Km9tLL.png" class="couple-img">
+   
+    <img src="https://i.imgur.com/8Km9tLL.png" id="coupleImg" class="couple-img" style="display:none;">
 
     <button id="openBtn" onclick="showMessage()">Open My Heart 💌</button>
 
@@ -163,14 +164,21 @@ function showMessage() {
     var message = document.getElementById("message");
     var button = document.getElementById("openBtn");
     var music = document.getElementById("bgMusic");
+    var image = document.getElementById("coupleImg");
 
+    // Show message
     message.style.display = "block";
     setTimeout(function(){
         message.style.opacity = "1";
     }, 100);
 
+    // Show image
+    image.style.display = "block";
+
+    // Hide button
     button.style.display = "none";
 
+    // Play music
     music.play();
 }
 
@@ -194,3 +202,4 @@ setInterval(createHeart, 300);
 
 </body>
 </html>
+
