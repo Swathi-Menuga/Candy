@@ -7,7 +7,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #ffe4e1; /* Soft pink */
+    background-color: #ffe4e1;
     overflow: hidden;
     font-family: 'Georgia', serif;
     display: flex;
@@ -32,33 +32,22 @@ body {
     background: white;
     padding: 40px;
     border-radius: 25px;
-    border: 8px solid #ff2e63;
+    border: 3px solid #ffb6c1;          /* Light outer line */
+    outline: 3px solid #ff69b4;         /* Second light line */
+    outline-offset: 8px;                /* Space between lines */
     text-align: center;
-    box-shadow: 0 0 40px rgba(255, 46, 99, 0.7);
-    animation: glowBox 2s infinite alternate;
     z-index: 2;
     width: 420px;
     position: relative;
-}
-
-@keyframes glowBox {
-    from { box-shadow: 0 0 20px #ff2e63; }
-    to { box-shadow: 0 0 50px #ff0055; }
+    overflow: hidden;
 }
 
 h1 {
-    color: #ff0055;
-}
-
-/* Couple Image */
-.couple-img {
-    width: 180px;
-    border-radius: 15px;
-    margin-bottom: 15px;
+    color: #ff1493;
 }
 
 button {
-    background-color: #ff2e63;
+    background-color: #ff69b4;
     color: white;
     padding: 12px 25px;
     border: none;
@@ -68,41 +57,29 @@ button {
 }
 
 button:hover {
-    background-color: #ff0055;
+    background-color: #ff1493;
 }
 
-/* Message Fade */
+/* Sliding message effect */
 #message {
     display: none;
     margin-top: 20px;
     font-size: 18px;
     color: #444;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
+    transform: translateX(100%);
+    transition: transform 1.2s ease;
 }
 
 /* Glowing dates */
 .glowDate {
-    color: #ff2e63;
+    color: #ff1493;
     font-weight: bold;
-    animation: glowText 1.5s infinite alternate;
-}
-
-@keyframes glowText {
-    from { text-shadow: 0 0 5px #ff2e63; }
-    to { text-shadow: 0 0 20px #ff0055; }
 }
 
 /* Sparkle Bangaram */
 .sparkle {
     color: goldenrod;
     font-weight: bold;
-    animation: sparkle 1s infinite alternate;
-}
-
-@keyframes sparkle {
-    from { text-shadow: 0 0 5px gold; }
-    to { text-shadow: 0 0 20px orange; }
 }
 
 /* Heartbeat */
@@ -112,7 +89,7 @@ button:hover {
 
 @keyframes beat {
     0% { transform: scale(1); }
-    50% { transform: scale(1.2); }
+    50% { transform: scale(1.15); }
     100% { transform: scale(1); }
 }
 </style>
@@ -120,7 +97,6 @@ button:hover {
 
 <body>
 
-<!-- Soft Romantic Instrumental Music -->
 <audio id="bgMusic" loop>
   <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6f4d0e7b3e.mp3?filename=romantic-background-112191.mp3" type="audio/mpeg">
 </audio>
@@ -128,10 +104,6 @@ button:hover {
 <div class="frame">
 
     <h1>Happy Birthday My Love ❤️</h1>
-
-    <!-- Couple Toys Image (You can replace link with your own image) -->
-   
-    <img src="https://i.imgur.com/8Km9tLL.png" id="coupleImg" class="couple-img" style="display:none;">
 
     <button id="openBtn" onclick="showMessage()">Open My Heart 💌</button>
 
@@ -164,21 +136,13 @@ function showMessage() {
     var message = document.getElementById("message");
     var button = document.getElementById("openBtn");
     var music = document.getElementById("bgMusic");
-    var image = document.getElementById("coupleImg");
 
-    // Show message
     message.style.display = "block";
     setTimeout(function(){
-        message.style.opacity = "1";
-    }, 100);
+        message.style.transform = "translateX(0)";
+    }, 50);
 
-    // Show image
-    image.style.display = "block";
-
-    // Hide button
     button.style.display = "none";
-
-    // Play music
     music.play();
 }
 
@@ -202,4 +166,3 @@ setInterval(createHeart, 300);
 
 </body>
 </html>
-
