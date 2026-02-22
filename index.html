@@ -28,28 +28,11 @@ body {
     100% { transform: translateY(110vh); }
 }
 
-/* Sparkles / Fireworks */
-.sparkle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: radial-gradient(circle, yellow, orange, red);
-    border-radius: 50%;
-    pointer-events: none;
-    animation: sparkleAnim 1s ease-out forwards;
-    z-index: 1;
-}
-
-@keyframes sparkleAnim {
-    0% { transform: scale(1) translate(0,0); opacity: 1; }
-    100% { transform: scale(0) translate(var(--x), var(--y)); opacity: 0; }
-}
-
-/* Card Frame */
 .frame {
     background: white;
     padding: 40px;
     border-radius: 25px;
+    /* Outer border lines removed */
     text-align: center;
     z-index: 2;
     width: 420px;
@@ -91,6 +74,12 @@ button:hover {
     font-weight: bold;
 }
 
+/* Sparkle Bangaram */
+.sparkle {
+    color: goldenrod;
+    font-weight: bold;
+}
+
 /* Heartbeat */
 .heartbeat {
     animation: beat 1s infinite;
@@ -123,19 +112,19 @@ button:hover {
         On <span class="glowDate">19 October</span>,  
         our souls didn’t just meet — they united forever ✨<br><br>
 
-        You walked into my life as a surprise,<br><br>
+        You walked into my life as a surprise 🤗,<br><br>
 
-        but you stayed as my destiny.<br><br>
+        but you stayed as my destiny 😘.<br><br>
 
         Today you are my boyfriend…<br>
         Tomorrow you will be my husband 💍<br><br>
 
         I used to call you <span class="sparkle">Bangaram</span> 💛  
-        because you are my treasure, my heart, my everything.<br><br>
+        because you are my treasure, my heart, my everything ♾️.<br><br>
 
-        I can’t wait to build our forever together.<br><br>
+        I can’t wait to build our forever together 🤗.<br><br>
 
-        <span class="heartbeat">I love you endlessly ❤️</span>
+        <span class="heartbeat">I love you endlessly ❤️ 😘 ♾️</span>
     </div>
 
 </div>
@@ -153,8 +142,6 @@ function showMessage() {
 
     button.style.display = "none";
     music.play();
-
-    startSparkles();
 }
 
 /* Falling hearts */
@@ -173,31 +160,6 @@ function createHeart() {
 }
 
 setInterval(createHeart, 300);
-
-/* Sparkle effect */
-function startSparkles() {
-    setInterval(() => {
-        const sparkle = document.createElement("div");
-        sparkle.classList.add("sparkle");
-        
-        const startX = Math.random() * window.innerWidth;
-        const startY = Math.random() * window.innerHeight;
-        sparkle.style.left = startX + "px";
-        sparkle.style.top = startY + "px";
-
-        // Random direction
-        const angle = Math.random() * 2 * Math.PI;
-        const distance = Math.random() * 100 + 50;
-        sparkle.style.setProperty('--x', distance * Math.cos(angle) + 'px');
-        sparkle.style.setProperty('--y', distance * Math.sin(angle) + 'px');
-
-        document.body.appendChild(sparkle);
-
-        setTimeout(() => {
-            sparkle.remove();
-        }, 1000);
-    }, 100); // creates sparkles rapidly
-}
 </script>
 
 </body>
